@@ -1,6 +1,6 @@
 import requests
 from jsonschema import validate
-from schemas.schema import post_users, list_users, update_users, error_register, successful_registr
+from schemas import schema
 
 url = 'https://reqres.in'
 
@@ -14,7 +14,7 @@ def test_create_user_status_code():
     assert response.status_code == 201
     assert body["name"] == 'morpheus'
 
-    validate(body, post_users)
+    validate(body, schema.post_users)
 
 
 def test_update_user_status_code():
@@ -25,7 +25,7 @@ def test_update_user_status_code():
     body = response.json()
     assert response.status_code == 200
     assert body["job"] == "zion resident"
-    validate(body, update_users)
+    validate(body, schema.update_users)
 
 
 def test_get_list_user_status_code():
@@ -35,7 +35,7 @@ def test_get_list_user_status_code():
 
     assert response.status_code == 200
     body = response.json()
-    validate(body, list_users)
+    validate(body, schema.list_users)
 
 
 def test_delete_user_status_code():
@@ -62,7 +62,7 @@ def test_unsuccessful_registration_user_status_code():
     assert response.status_code == 400
     assert body["error"] == "Missing password"
 
-    validate(body, error_register)
+    validate(body, schema.error_register)
 
 
 def test_successful_registration_user_status_code():
@@ -72,7 +72,7 @@ def test_successful_registration_user_status_code():
     body = response.json()
     assert response.status_code == 200
     assert body["id"] == 4
-    validate(body, successful_registr)
+    validate(body, schema.successful_registr)
 
 
 # регистрация с неверным email
