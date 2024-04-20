@@ -2,7 +2,7 @@ import requests
 from jsonschema import validate
 from schemas.schemas import post_users, list_users, update_users, error_register, successful_registr
 
-
+# в ответе  всегда разные значения
 def test_create_user_status_code():
     url = 'https://reqres.in'
     endpoint = '/api/users'
