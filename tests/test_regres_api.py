@@ -18,7 +18,6 @@ def test_create_user_status_code():
 
 
 def test_update_user_status_code():
-    url = 'https://reqres.in'
     endpoint = '/api/users/2'
     params = {"name": "morpheus", "job": "zion resident"}
     response = requests.put(url + endpoint, json=params)
@@ -30,7 +29,6 @@ def test_update_user_status_code():
 
 
 def test_get_list_user_status_code():
-    url = 'https://reqres.in'
     endpoint = '/api/users'
     params = {"page": "2"}
     response = requests.get(url + endpoint, json=params)
@@ -41,7 +39,6 @@ def test_get_list_user_status_code():
 
 
 def test_delete_user_status_code():
-    url = 'https://reqres.in'
     endpoint = '/api/users/2'
     response = requests.delete(url + endpoint)
 
@@ -50,7 +47,6 @@ def test_delete_user_status_code():
 
 
 def test_get_user_not_found_status_code():
-    url = 'https://reqres.in'
     endpoint = '/api/unknown/23'
     response = requests.get(url + endpoint)
     assert response.status_code == 404
@@ -58,7 +54,6 @@ def test_get_user_not_found_status_code():
 
 
 def test_unsuccessful_registration_user_status_code():
-    url = 'https://reqres.in'
     endpoint = '/api/register'
     params = {"email": "sydney@fife"}
     response = requests.post(url + endpoint, json=params)
@@ -71,7 +66,6 @@ def test_unsuccessful_registration_user_status_code():
 
 
 def test_successful_registration_user_status_code():
-    url = 'https://reqres.in'
     endpoint = '/api/register'
     params = {"email": "eve.holt@reqres.in", "password": "pistol"}
     response = requests.post(url + endpoint, json=params)
@@ -83,7 +77,6 @@ def test_successful_registration_user_status_code():
 
 # регистрация с неверным email
 def test_invalid_email_registration_user_status_code():
-    url = 'https://reqres.in'
     endpoint = '/api/register'
     params = {"email": "eve.holt.reqres.in", "password": "pistol"}
     response = requests.post(url + endpoint, json=params)
